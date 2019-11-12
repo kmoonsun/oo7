@@ -3,6 +3,7 @@ A binary analysis framework to defence against potential vulnerability to Spectr
 	
 ## Publication 
 >oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. Wang, Guanhua, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. arXiv preprint arXiv:1807.05843 (2018).
+
 Paper link: https://arxiv.org/abs/1807.05843
 
 ## License
@@ -40,56 +41,51 @@ NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using t
 
 
 ### Install and compile devlopment version of Bap.
-    clone bap project: 
 ```
+clone bap project: 
 ## $ git clone https://github.com/BinaryAnalysisPlatform/bap
-```
-    pin latest bap to opam:
-    ```
-    ## $ opam pin add bap to/your/bap/project/path
-    ```
-    opam will automatically compiles lastest bap.
 
-    update your PATH:
-    ```
-    ## $ eval `opam config env`
-    ```
-    Make sure bap is the latest version
-    ```
-    ## $ bap --version 
-    ## 1.5.0-dev
-    ```
+pin latest bap to opam:
+## $ opam pin add bap to/your/bap/project/path
+opam will automatically compiles lastest bap.
+
+update your PATH:
+## $ eval `opam config env`
+
+Make sure bap is the latest version
+## $ bap --version 
+## 1.5.0-dev
+```
 
 ### Copy "check/" directory and patch to your opam share directory.
-   ```
-   ## $ copy check -r ~/.opam/4.05.0/share/bap
-   ## $ copy path/posix.h ~/.opam/4.05.0/share/bap-api/c/
-   ```
-   NOTE: This path maybe differnt according to your opam installation and opam switch
+```
+## $ copy check -r ~/.opam/4.05.0/share/bap
+## $ copy path/posix.h ~/.opam/4.05.0/share/bap-api/c/
 
+NOTE: This path maybe differnt according to your opam installation and opam switch
+```
 
 ### Build and install ddtbd plugin.
-
-    Install plugin:
-    ```
-     $ bapbundle install ddtbd.plugin
-     ```
+```
+Install plugin:
+$ bapbundle install ddtbd.plugin
+```
 
 
 ### Run the toy example. 
-   ```
-     $ bap test/test --recipe=check
-   ```
+```
+ $ bap test/test --recipe=check
+ ```
 
 
 ### Profile the output of detection.
-    ```
-    ## objdump -S test > test.asm
-    ## ./tool/incidents_profile.py incidents test.asm
-    ```
-    You can find a profile file with name "incidents_profile.txt" in you directory. 
+```
+## objdump -S test > test.asm
+## ./tool/incidents_profile.py incidents test.asm
 
-    The content of incidents_profile.txt
+You can find a profile file with name "incidents_profile.txt" in you directory. 
+
+The content of incidents_profile.txt
 	====================================
 	@branches: 12                # all condition branches
 	@S1: 1 (8.333%)              # tainted branches <CB>
@@ -113,21 +109,21 @@ NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using t
 	taint#4005d6
 	...
 	===================================
-
+```
 
 
 ### Testing for Paul Kocher' examples:
-    ```
-    ## $ cd Kocher_tests/v01
-    ## $ gcc test.c -g -o test
-    ## $ bap test/test --recipe=check
-    ## $ ../../tool/incidents_profile.py incidents test.asm
-   ```
+```
+## $ cd Kocher_tests/v01
+## $ gcc test.c -g -o test
+## $ bap test/test --recipe=check
+## $ ../../tool/incidents_profile.py incidents test.asm
+```
 
 ## Other options
 ```
 	use $bap --ddtbd-help for more options
-```
 	Note: 
         A. Use '--ddtbd-ignore-program-dependencies' or '--ddtbd-ignore-program-dependencies --ddtbd-ignore-control-dependencies' option will give you less detection results, but it may miss some true positives. 
         B. You can edit the "recipe.scm" to enable or disable the options. 
+```
