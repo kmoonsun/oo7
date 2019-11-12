@@ -45,8 +45,7 @@
 ;; environment is used to pass user data.
 (defmethod call-return (name _ ret)
   (when (= name 'getenv)
-    (untrust/region ret 4)))
-
+    (untrust/string ret)))
 
 ;; Rule:
 ;; realpath(x,y,n) |- T(x,strlen(x)), T(y,strlen(x))
@@ -66,8 +65,7 @@
 ;; An adversary may affect the program environment and control the
 ;; exit code of trusted programs
 (defmethod call-return (name cmd ret)
-  (when (= name 'system) 
-    (untrust/value ret)))
+  (when (= name 'system) (untrust/value ret)))
 
 ;; Rule:
 ;; r = read(_,p,n) |- T(p,n), T(r)
@@ -94,17 +92,16 @@
 ;;
 ;; Motivation:
 ;; Same as with read.
-(defmethod call-return (name buf len ret)
+(defmethod call (name buf len)
   (when (= name 'fgets)
-    (untrust/region buf len)
-    (untrust/region ret len)))
+    (untrust/region buf len)))
 
 ;; Rule:
 ;; r = fread(p,n,m,_) |- T(p, n*m), T(r)
 ;; Motivation:
 ;; Same as with read
 (defmethod call-return (name p n m ret)
-  (when (is-in name 'fread '__fread_chk)
+  (when (= name 'fread)
     (untrust/region p (* n m))
     (untrust/value ret)))
 
@@ -117,24 +114,18 @@
 
 ;; Rule:
 ;; recvfrom(_,p,n,...)
-(defmethod call-return (name fd buf len flg src slen ret)
+(defmethod call (name fd buf len flg src slen res)
   (when (= name 'recvfrom)
     (untrust/region buf len)
-    (untrust/value ret)))
+    (untrust/value res)))
 
 ;; Rule:
 ;; x = fgetc(_), x = getc(_) |- T(c)
 ;; Motivation:
 ;; User input
 (defmethod call-return (name _ ret)
-  (when (is-in name 'fgetc 'getc '_IO_getc)
+  (when (is-in name 'fgetc 'getc)
     (untrust/value ret)))
-
-;; fake taint source
-(defmethod call-return (name ret)
-  (when (= name 'get_taint_source)
-    (untrust/value ret)))
-
 
 
 ;; Rule:
@@ -187,14 +178,12 @@
 
 
 ;; Rule:
+;; sscanf(s,_, ...) |- T(s,strlen(s))
 ;; Motivation:
 ;; Do not trust data that require parsing
-
-
-(defmethod call (name s f v d e) 
-    (when (is-in name '__isoc99_fscanf 'fscanf 'tfscanf) 
-    (untrust/region v 4)))
-
+(defmethod call (name str)
+  (when (= name 'sscanf)
+    (untrust/string )))
 
 ;; Rule:
 ;; undefined-input (x) |- T(x)
@@ -202,33 +191,5 @@
 ;; Motivation:
 ;; We don't know anything about data that is defined externally, so we
 ;; will assume, that it is also controlled by a user.
-;;(defmethod undefined-input (x)
-;;  (untrust/value x))
-
-(defmethod call-return (name b len ret)
-  (when (= name 'getcwd)
-    (untrust/region b len)
-    (untrust/region ret len)))
-
-(defmethod call-return (name _ ret)
-  (when (= name 'readline)
-    (untrust/region ret 4)))
-
-(defmethod call-return (name ret)
-  (when (is-in name 'getuid 'getegid 'getpid 'getegid 'geteuid)
-    (untrust/value ret)))
-
-
-(defmethod call(name f a e)
-  (when (= name 'getsockname)
-    (untrust/region a 16)))
-
-(defmethod call(name f a e)
-  (when (= name 'getpeername)
-    (untrust/region a 16)))
-
-;;(defmethod call-return (name ret)
-;;  (when (is-in name '__ctype_b_loc)
-;;    (untrust/region ret 0)))
-
-
+(defmethod undefined-input (x)
+  (untrust/value x))
