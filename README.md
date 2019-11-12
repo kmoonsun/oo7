@@ -2,8 +2,9 @@
 A binary analysis framework to defence against potential vulnerability to Spectre attacks. Our key contribution is to balance the concerns of effectiveness, analysis time and run-time overheads. We employ control flow extraction, taint analysis, and address analysis to detect tainted conditional branches and speculative memory accesses.<oo7>
 	
 ## Publication 
->oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. Wang, Guanhua, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. arXiv preprint arXiv:1807.05843 (2018).
+>oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. Wang, Guanhua, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. arXiv preprint arXiv:1807.05843 (2018). 
 
+Our paper is accepted to appear in the IEEE Transactions on Software Engineering (TSE). <p>
 Paper link: https://arxiv.org/abs/1807.05843
 
 ## License
