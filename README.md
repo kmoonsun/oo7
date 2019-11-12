@@ -4,7 +4,7 @@ A binary analysis framework to defence against potential vulnerability to Spectr
 ## Publication 
 >oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. Wang, Guanhua, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. arXiv preprint arXiv:1807.05843 (2018). 
 
-Our paper is accepted to appear in the IEEE Transactions on Software Engineering (TSE). <p>
+Our paper was accepted to appear in the IEEE Transactions on Software Engineering (TSE). <p>
 Paper link: https://arxiv.org/abs/1807.05843
 
 ## License
@@ -15,7 +15,7 @@ NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using t
     ./ddtbd                # the plugin for spectre detection
     ./toy                  # a toy example from Spectre paper: https://spectreattack.com/spectre.pdf
     ./tool                 # a tool to profile the output (incidents) of the detection 
-    ./patch                 # patch code for bab
+    ./patch                # patch code for bab
     ./testcases       	   # simple test cases
         - Kocher_tests/    # the examples from Paul Kocher's post: https://www.paulkocher.com/doc/MicrosoftCompilerSpectreMitigation.html
  
@@ -58,10 +58,10 @@ Make sure bap is the latest version
 ## 1.5.0-dev
 ```
 
-### Copy "check/" directory and patch to your opam share directory.
+### Copy "check/" directory and patch file to your opam share directory.
 ```
 ## $ copy check -r ~/.opam/4.05.0/share/bap
-## $ copy path/posix.h ~/.opam/4.05.0/share/bap-api/c/
+## $ copy patch/posix.h ~/.opam/4.05.0/share/bap-api/c/
 
 NOTE: This path maybe differnt according to your opam installation and opam switch
 ```
