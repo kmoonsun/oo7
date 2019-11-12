@@ -122,8 +122,8 @@ The content of incidents_profile.txt
 
 ## Other options
 ```
-	use $bap --ddtbd-help for more options
-	Note: 
-        A. Use '--ddtbd-ignore-program-dependencies' or '--ddtbd-ignore-program-dependencies --ddtbd-ignore-control-dependencies' option will give you less detection results, but it may miss some true positives. 
-        B. You can edit the "recipe.scm" to enable or disable the options. 
+use $bap --ddtbd-help for more options
+Note: 
+A. Use '--ddtbd-ignore-program-dependencies' or '--ddtbd-ignore-program-dependencies --ddtbd-ignore-control-dependencies' option will give you less detection results, but it may miss some true positives. 
+B. You can edit the "recipe.scm" to enable or disable the options. 
 ```
