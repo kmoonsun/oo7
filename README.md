@@ -13,7 +13,7 @@ Paper link: https://arxiv.org/abs/1807.05843
 NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using the tool. 
 
 ## Directory orgnization:
-    ./check                # the lisp files for ddtbd (oo7 core engine)
+    ./check                # the lisp files for ddtbd (core engine of oo7)
     ./ddtbd                # the source code for spectre detection
     ./toy                  # a toy example from Spectre paper: https://spectreattack.com/spectre.pdf
     ./tool                 # a tool to profile the output (incidents) of the detection 
@@ -28,16 +28,16 @@ NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using t
     Please follow the instructions on the following page to install opam and bap:
 
     A. Install opam-1.2.2 or later.
-        ## $ sudo add-apt-repository --yes ppa:avsm/ppa
-        ## $ sudo apt-get update
-        ## $ sudo apt-get --yes install opam
+        $ sudo add-apt-repository --yes ppa:avsm/ppa
+        $ sudo apt-get update
+        $ sudo apt-get --yes install opam
 
     B. Initialize opam and to install OCaml compiler.
-        ## $ opam init --comp=4.05.0
-        ## $ eval `opam config env`
+        $ opam init --comp=4.05.0
+        $ eval `opam config env`
 
     C. Install bap and its system dependencies
-        ## $ opam depext --install bap
+        $ opam depext --install bap
 
 
     *Reference: https://github.com/BinaryAnalysisPlatform/bap/wiki/Build-tips-and-tricks 
@@ -46,24 +46,24 @@ NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using t
 ### Install and compile the development version of Bap.
 ```
 clone bap project: 
-## $ git clone https://github.com/BinaryAnalysisPlatform/bap
+$ git clone https://github.com/BinaryAnalysisPlatform/bap
 
 pin latest bap to opam:
-## $ opam pin add bap to/your/bap/project/path
+$ opam pin add bap to/your/bap/project/path
 opam will automatically compile the latest bap.
 
 update your PATH:
-## $ eval `opam config env`
+$ eval `opam config env`
 
 Make sure bap is the latest version
-## $ bap --version 
-## 1.5.0-dev
+$ bap --version 
+1.5.0-dev
 ```
 
 ### Copy "check/" directory and patch file to your opam share directory.
 ```
-## $ copy check -r ~/.opam/4.05.0/share/bap
-## $ copy patch/posix.h ~/.opam/4.05.0/share/bap-api/c/
+$ copy check -r ~/.opam/4.05.0/share/bap/
+$ copy patch/posix.h ~/.opam/4.05.0/share/bap-api/c/
 
 NOTE: This path may be different according to your opam installation and opam switch
 ```
@@ -83,14 +83,15 @@ $ bapbundle install ddtbd.plugin
 
 ### Run the toy example. 
 ```
- $ bap test/test --recipe=check
+ $ cd toy/
+ $ bap ./test --recipe=check
  ```
 
 
 ### Profile the output of detection.
 ```
-## objdump -S test > test.asm
-## ./tool/incidents_profile.py incidents test.asm
+$ objdump -S test > test.asm
+$ ./tool/incidents_profile.py incidents test.asm
 
 You can find a profile file with name "incidents_profile.txt" in you directory. 
 
@@ -123,15 +124,15 @@ The content of incidents_profile.txt
 
 ### Testing for Paul Kocher' examples:
 ```
-## $ cd Kocher_tests/v01
-## $ gcc test.c -g -o test
-## $ bap test/test --recipe=check
-## $ ../../tool/incidents_profile.py incidents test.asm
+$ cd Kocher_tests/v01
+$ gcc test.c -g -o test
+$ bap test/test --recipe=check
+$ ../../tool/incidents_profile.py incidents test.asm
 ```
 
 ## Other options
 ```
-use $bap --ddtbd-help for more options
+use $ bap --ddtbd-help for more options
 Note: 
 A. Use '--ddtbd-ignore-program-dependencies' or '--ddtbd-ignore-program-dependencies --ddtbd-ignore-control-dependencies' option will give you less detection results, but it may miss some true positives. 
 B. You can edit the "recipe.scm" to enable or disable the options. 
