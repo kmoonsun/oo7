@@ -13,8 +13,8 @@ Paper link: https://arxiv.org/abs/1807.05843
 NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using the tool. 
 
 ## Directory orgnization:
-    ./check                # the lisp files for ddtbd
-    ./ddtbd                # the plugin for spectre detection
+    ./check                # the lisp files for ddtbd (oo7 core engine)
+    ./ddtbd                # the source code for spectre detection
     ./toy                  # a toy example from Spectre paper: https://spectreattack.com/spectre.pdf
     ./tool                 # a tool to profile the output (incidents) of the detection 
     ./patch                # patch code for bab
