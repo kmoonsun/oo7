@@ -69,7 +69,12 @@ NOTE: This path may be different according to your opam installation and opam sw
 ```
 
 ### Build and install ddtbd plugin.
+
 ```
+Build:
+$ bapbuild -clean 
+$ bapbuild ddtbd.plugin -pkgs bap-taint, bap-primus
+
 Install plugin:
 $ bapbundle install ddtbd.plugin
 ```
