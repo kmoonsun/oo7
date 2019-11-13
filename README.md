@@ -1,5 +1,7 @@
-# oo7: Detecting Spectre vulnerabilities on binary.
-A binary analysis framework to defence against potential vulnerability to Spectre attacks. Our key contribution is to balance the concerns of effectiveness, analysis time and run-time overheads. We employ control flow extraction, taint analysis, and address analysis to detect tainted conditional branches and speculative memory accesses.<oo7>
+# oo7: Detecting and Patching Spectre Vulnerabilities on Binary. 
+A binary analysis framework to defend against potential vulnerability to Spectre attacks. Our key contribution is to balance the concerns of effectiveness, analysis time and run-time overheads. We employ control flow extraction, taint analysis, and address analysis to detect tainted conditional branches and speculative memory accesses.<oo7>
+	
+This is a joint work with NUS, ASSET group (link: https://asset-group.github.io/) in SUTD and CMU. 
 	
 ## Publication 
 >oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. Wang, Guanhua, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. arXiv preprint arXiv:1807.05843 (2018). 
@@ -41,14 +43,14 @@ NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using t
     *Reference: https://github.com/BinaryAnalysisPlatform/bap/wiki/Build-tips-and-tricks 
 
 
-### Install and compile devlopment version of Bap.
+### Install and compile the development version of Bap.
 ```
 clone bap project: 
 ## $ git clone https://github.com/BinaryAnalysisPlatform/bap
 
 pin latest bap to opam:
 ## $ opam pin add bap to/your/bap/project/path
-opam will automatically compiles lastest bap.
+opam will automatically compile the latest bap.
 
 update your PATH:
 ## $ eval `opam config env`
@@ -63,7 +65,7 @@ Make sure bap is the latest version
 ## $ copy check -r ~/.opam/4.05.0/share/bap
 ## $ copy patch/posix.h ~/.opam/4.05.0/share/bap-api/c/
 
-NOTE: This path maybe differnt according to your opam installation and opam switch
+NOTE: This path may be different according to your opam installation and opam switch
 ```
 
 ### Build and install ddtbd plugin.
@@ -128,3 +130,5 @@ Note:
 A. Use '--ddtbd-ignore-program-dependencies' or '--ddtbd-ignore-program-dependencies --ddtbd-ignore-control-dependencies' option will give you less detection results, but it may miss some true positives. 
 B. You can edit the "recipe.scm" to enable or disable the options. 
 ```
+
+
