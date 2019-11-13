@@ -72,6 +72,7 @@ NOTE: This path may be different according to your opam installation and opam sw
 
 ```
 Build:
+$ cd ddtbd/
 $ bapbuild -clean 
 $ bapbuild ddtbd.plugin -pkgs bap-taint, bap-primus
 
