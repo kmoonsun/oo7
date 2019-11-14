@@ -57,15 +57,16 @@ NOTE: You should agree with the licensing agreement (LICENSE.pdf) before using t
 ```
 clone bap project: 
 $ git clone https://github.com/BinaryAnalysisPlatform/bap
+$ git checkout tags/v1.5.0
 
-pin latest bap to opam:
+pin development version of bap to opam:
 $ opam pin add bap to/your/bap/project/path
 opam will automatically compile the latest bap.
 
 update your PATH:
 $ eval `opam config env`
 
-Make sure bap is the latest version
+Make sure bap is the version 1.5.0
 $ bap --version 
 1.5.0-dev
 ```
@@ -84,7 +85,7 @@ NOTE: This path may be different according to your opam installation and opam sw
 Build:
 $ cd ddtbd/
 $ bapbuild -clean 
-$ bapbuild ddtbd.plugin -pkgs bap-taint, bap-primus
+$ bapbuild ddtbd.plugin -pkgs bap-taint,bap-primus
 
 Install plugin:
 $ bapbundle install ddtbd.plugin
