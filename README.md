@@ -1,7 +1,6 @@
 # oo7: Detecting and Patching Spectre Vulnerabilities on Binary. 
 A binary analysis framework to defend against potential vulnerability to Spectre attacks. Our key contribution is to balance the concerns of effectiveness, analysis time and run-time overheads. We employ control flow extraction, taint analysis, and address analysis to detect tainted conditional branches and speculative memory accesses.<oo7>
 	
-This is a joint work with NUS, ASSET group (link: https://asset-group.github.io/) in SUTD and CMU. 
 	
 ## Publication 
 >oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. Wang, Guanhua, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. arXiv preprint arXiv:1807.05843 (2018). 
