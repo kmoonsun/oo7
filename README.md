@@ -4,7 +4,7 @@ A binary analysis framework to defend against potential vulnerability to Spectre
 	
 ## Publication 
 
->  Wang, Guanhua, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. IEEE Transactions on Software Engineering(2020). 
+>  Guanhua Wang, Sudipta Chattopadhyay, Ivan Gotovchits, Tulika Mitra, and Abhik Roychoudhury. oo7: Low-overhead Defense against Spectre Attacks via Program Analysis. IEEE Transactions on Software Engineering(2020). 
 
 Paper link: [oo7TSE](https://www.comp.nus.edu.sg/~abhik/pdf/TSE20_oo7.pdf)
 
